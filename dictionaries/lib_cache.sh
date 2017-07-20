@@ -2,4 +2,5 @@
 
 pwd=`pwd`
 cd ..
-sh -x ./with_server.sh "cat $pwd/lib_cache.sql | clickhouse --client -m -n"
+make -C ../build dict_lib
+sh -x ./with_server.sh "cat $pwd/lib_cache.sql | grep -v "^--" | clickhouse --client -m -n"

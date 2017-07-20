@@ -20,7 +20,7 @@ pid=$!
 #sleep 4
 cd $pwd
 
-(sleep 4 && eval $*)
+(sleep 3 && eval $*)
 
 
 sleep 1
