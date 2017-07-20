@@ -1,2 +1,2 @@
 
-../build/dbms/src/Server/clickhouse --client --config `pwd`/config-client.xml $*
+../build/dbms/src/Server/clickhouse --client --config `pwd`/clickhouse-client.xml $*

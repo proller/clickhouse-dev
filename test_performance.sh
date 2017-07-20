@@ -1,3 +1,4 @@
 #!/bin/sh
 
-../build/dbms/src/Server/clickhouse --performance-test --r ../dbms/tests/performance > performance.json
+# --config `pwd`/clickhouse-client.xml
+../build/dbms/src/Server/clickhouse --performance-test --port 19000 --r ../dbms/tests/performance > performance.json
