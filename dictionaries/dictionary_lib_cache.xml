@@ -6,7 +6,8 @@
             <source>
                 
     <lib>
-        <filename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib.so</filename>
+        <filename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib_c.so</filename>
+        <zfilename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib.so</zfilename>
         <zfilename>../build/dbms/tests/external_dictionaries/dict_lib/libempty.so</zfilename>
         <format>TabSeparated</format>
     </lib>
