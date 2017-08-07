@@ -1,13 +1,13 @@
 
     <dictionaries>
         <dictionary>
-            <name>lib_cache</name>
+            <name>lib_cache_test1</name>
 
             <source>
                 
     <lib>
-        <filename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib_c.so</filename>
-        <zfilename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib.so</zfilename>
+        <zfilename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib_c.so</zfilename>
+        <filename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_libd.so</filename>
         <zfilename>../build/dbms/tests/external_dictionaries/dict_lib/libempty.so</zfilename>
         <format>TabSeparated</format>
     </lib>
@@ -20,7 +20,7 @@
             </lifetime>
 
             <layout>
-                <cache><size_in_cells>3</size_in_cells></cache>
+                <cache><size_in_cells>30000</size_in_cells></cache>
             </layout>
 
             <structure>
@@ -28,94 +28,24 @@
     <id>
         <name>id</name>
     </id>
-    
 
-                
     <attribute>
-        <name>UInt8_</name>
-        <type>UInt8</type>
-        <null_value>1</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>UInt16_</name>
-        <type>UInt16</type>
-        <null_value>1</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>UInt32_</name>
-        <type>UInt32</type>
-        <null_value>1</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>UInt64_</name>
+        <name>user_id_hash</name>
         <type>UInt64</type>
-        <null_value>1</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>Int8_</name>
-        <type>Int8</type>
-        <null_value>-1</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>Int16_</name>
-        <type>Int16</type>
-        <null_value>-1</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>Int32_</name>
-        <type>Int32</type>
-        <null_value>-1</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>Int64_</name>
-        <type>Int64</type>
-        <null_value>-1</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>Float32_</name>
-        <type>Float32</type>
-        <null_value>2.71828</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>Float64_</name>
-        <type>Float64</type>
-        <null_value>2.71828</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>String_</name>
-        <type>String</type>
-        <null_value>implicit-default</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>Date_</name>
-        <type>Date</type>
-        <null_value>2015-11-25</null_value>
-    </attribute>
-    
-    <attribute>
-        <name>DateTime_</name>
-        <type>DateTime</type>
-        <null_value>2015-11-25 00:00:00</null_value>
-    </attribute>
-    
-
-                
-    <attribute>
-        <name>Parent</name>
-        <type>UInt64</type>
-        <hierarchical>true</hierarchical>
         <null_value>0</null_value>
+    </attribute>
+
+    <attribute>
+        <name>user_id</name>
+        <type>UInt64</type>
+        <null_value>0</null_value>
+    </attribute>
+
+    <attribute>
+        <name>some_id</name>
+        <type>UInt64</type>
+        <null_value>0</null_value>
+        <hierarchical>true</hierarchical>
     </attribute>
     
             </structure>

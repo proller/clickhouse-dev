@@ -13,11 +13,11 @@ killall clickhouse || true
 
 trap 'kill -TERM $pid; wait $pid' TERM
 
-#gdb -ex run --args 
+#gdb -ex run --args \
 ../build/dbms/src/Server/clickhouse --server --config-file=./config.xml &
 #server.sh &
 pid=$!
-#sleep 4
+#sleep 20
 cd $pwd
 
 (sleep 3 && eval $*)
