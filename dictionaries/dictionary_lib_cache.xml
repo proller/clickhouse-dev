@@ -9,7 +9,14 @@
         <zfilename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib_c.so</zfilename>
         <filename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_libd.so</filename>
         <zfilename>../build/dbms/tests/external_dictionaries/dict_lib/libempty.so</zfilename>
-        <format>TabSeparated</format>
+        <settings>
+          <key1>value1</key1>
+          <key2>value2</key2>
+          <key2>value3</key2>
+          <key3/>
+          <key3/>
+          <key4/>
+        </settings>
     </lib>
     
             </source>
