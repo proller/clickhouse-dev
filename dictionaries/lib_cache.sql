@@ -1,6 +1,6 @@
 select dictGetUInt64('lib_cache_test1', 'user_id_hash', toUInt64(1));
-select dictGetUInt64OrDefault('lib_cache_test1', 'user_id', toUInt64(n), toUInt64(42)) from system.one array join range(8) as n;
-select dictHas('lib_cache_test1', toUInt64(n)) from system.one array join range(8) as n;
+select dictGetUInt64OrDefault('lib_cache_test1', 'user_id', toUInt64(n), toUInt64(42)) from system.one array join range(18) as n;
+select dictHas('lib_cache_test1', toUInt64(n)) from system.one array join range(6) as n;
                                                                                                                                                               
 -- select dictGetHierarchy('lib_cache_test1' as d, key), dictIsIn(d, key, toUInt64(1)), dictIsIn(d, key, key) from system.one array join range(toUInt64(8)) as key;
 
