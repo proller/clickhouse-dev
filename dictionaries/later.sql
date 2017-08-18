@@ -53,3 +53,8 @@ select dictGetDateOrDefault('lib_hashed', 'Date_', toUInt64(n), toDate('2015-01-
 select dictGetDateTime('lib_hashed', 'DateTime_', toUInt64(n)) from system.one array join range(8) as n;
 select dictGetDateTimeOrDefault('lib_hashed', 'DateTime_', toUInt64(n), toDateTime('2015-01-01 00:00:00')) from system.one array join range(8) as n;
 select dictGetHierarchy('lib_hashed' as d, key), dictIsIn(d, key, toUInt64(1)), dictIsIn(d, key, key) from system.one array join range(toUInt64(8)) as key;
+
+
+select dictGetInt64('lib_complex_integers_key_cache', 'Int64_', toUInt64(n)) from system.one array join range(8) as n;
+select dictGetInt64('lib_complex_integers_key_hashed', 'Int64_', toUInt64(n)) from system.one array join range(8) as n;
+

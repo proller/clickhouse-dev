@@ -14,6 +14,7 @@ killall clickhouse || true
 trap 'kill -TERM $pid; wait $pid' TERM
 
 #gdb -ex run --args \
+#valgrind \
 ../build/dbms/src/Server/clickhouse --server --config-file=./config.xml &
 #server.sh &
 pid=$!

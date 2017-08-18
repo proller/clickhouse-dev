@@ -2,7 +2,7 @@
 
 pwd=`pwd`
 
-type=_asan
+#type=_asan
 
 mkdir -p ../build$type && cd ../build$type
 #cmake .. -DCMAKE_CXX_COMPILER=`which g++-6` -DCMAKE_C_COMPILER=`which gcc-6` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
