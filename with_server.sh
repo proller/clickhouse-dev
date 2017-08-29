@@ -6,6 +6,9 @@
 pwd=`pwd`
 #cd ..
 killall clickhouse || true
+
+#BUILD_TYPE=_asan
+
 ("./build.sh")
 
 #(sleep 16 && clickhouse --client -m -n < ../dbms/tests/queries/0_stateless/00314_sample_factor_virtual_column.sql) &
@@ -15,7 +18,7 @@ trap 'kill -TERM $pid; wait $pid' TERM
 
 #gdb -ex run --args \
 #valgrind \
-../build/dbms/src/Server/clickhouse --server --config-file=./config.xml &
+../build$BUILD_TYPE/dbms/src/Server/clickhouse --server --config-file=./config.xml &
 #server.sh &
 pid=$!
 #sleep 20
