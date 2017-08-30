@@ -3,7 +3,8 @@
 # USAGE:
 # ./with_server.sh ./test_performance.sh
 
-pwd=`pwd`
+#pwd=`pwd`
+pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 #cd ..
 killall clickhouse || true
 
