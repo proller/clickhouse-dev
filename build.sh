@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
-pwd=`pwd`
+#pwd=`pwd`
+pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 #export BUILD_TYPE=_asan
 
