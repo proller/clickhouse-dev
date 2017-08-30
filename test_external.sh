@@ -1,3 +1,4 @@
+
 pwd=`pwd`
 #cd ../dbms/tests/
 #./clickhouse-test -c "../../clang_msan/dbms/src/Server/clickhouse --client --config ${pwd}/config-client.xml "
