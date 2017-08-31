@@ -6,9 +6,9 @@
             <source>
                 
     <library>
-        <zfilename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib_c.so</zfilename>
-        <path>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib.so</path>
-        <zzfilename>../build/dbms/tests/external_dictionaries/dict_lib/libempty.so</zzfilename>
+        <zfilename>../build/dbms/tests/external_dictionaries/dictionary_library/libdictionary_library_c.so</zfilename>
+        <path>../build/dbms/tests/external_dictionaries/dictionary_library/libdictionary_library.so</path>
+        <zzfilename>../build/dbms/tests/external_dictionaries/dictionary_library/dictionary_library_empty.so</zzfilename>
         <settings>
           <key1>value1</key1>
           <key2>value2</key2>
