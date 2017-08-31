@@ -5,9 +5,9 @@
 
             <source>
                 
-    <lib>
+    <library>
         <zfilename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib_c.so</zfilename>
-        <filename>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib.so</filename>
+        <path>../build/dbms/tests/external_dictionaries/dict_lib/libdict_lib.so</path>
         <zzfilename>../build/dbms/tests/external_dictionaries/dict_lib/libempty.so</zzfilename>
         <settings>
           <key1>value1</key1>
@@ -19,7 +19,7 @@
           <key4/>
 -->
         </settings>
-    </lib>
+    </library>
     
             </source>
 
