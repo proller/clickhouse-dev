@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # USAGE:
-# ./with_server.sh ./test_performance.sh
+# BUILD_TYPE=_debug ./with_server.sh ./test_performance.sh
 
 #pwd=`pwd`
 pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
