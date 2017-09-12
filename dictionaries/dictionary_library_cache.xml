@@ -4,7 +4,7 @@
             <name>lib_cache_test1</name>
 
             <source>
-                
+
     <library>
         <zfilename>../build/dbms/tests/external_dictionaries/dictionary_library/libdictionary_library_c.so</zfilename>
         <path>../build/dbms/tests/external_dictionaries/dictionary_library/libdictionary_library.so</path>
@@ -20,7 +20,7 @@
 -->
         </settings>
     </library>
-    
+
             </source>
 
             <lifetime>
@@ -33,7 +33,7 @@
             </layout>
 
             <structure>
-                
+
     <id>
         <name>id</name>
     </id>
