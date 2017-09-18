@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash -e
 
 pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 mkdir -p ${pwd}/../build$BUILD_TYPE && cd ${pwd}/../build$BUILD_TYPE

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 pwd=`pwd`
 #cd ../dbms/tests/

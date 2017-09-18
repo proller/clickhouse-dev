@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/usr/bin/env bash -e
 
 # USAGE:
 # BUILD_TYPE=_debug ./with_server.sh ./test_performance.sh

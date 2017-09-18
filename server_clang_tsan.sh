@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash -e
 
 export BUILD_TYPE=_tsan
 pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
