@@ -4,14 +4,20 @@ CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 export BUILD_TYPE=${BUILD_TYPE:="_clang"} 
 
-if [[ "$OSTYPE" == "freebsd"* ]]; then
-MINUS=""
+if [[ "$OSTYPE" == "FreeBSD"* ]]; then
+    MINUS=""
 else
-MINUS="-"
+    MINUS="-"
 fi
 
-compiler=`bash -c "compgen -c clang | grep 'clang$MINUS[[:digit:]]' | sort --version-sort --reverse | head -n1"`
-compilerpp=`bash -c "compgen -c clang++ | grep 'clang++$MINUS[[:digit:]]' | sort --version-sort --reverse | head -n1"`
+compiler=`which clang-devel`
+if [ -z ${compiler} ]; then
+    compiler=`bash -c "compgen -c clang | grep 'clang$MINUS[[:digit:]]' | sort --version-sort --reverse | head -n1"`
+fi
+compilerpp=`which clang++-devel`
+if [ -z ${compilerpp} ]; then
+    compilerpp=`bash -c "compgen -c clang++ | grep 'clang++$MINUS[[:digit:]]' | sort --version-sort --reverse | head -n1"`
+fi
 
 mkdir -p $CURDIR/../build$BUILD_TYPE && cd $CURDIR/../build$BUILD_TYPE
 
