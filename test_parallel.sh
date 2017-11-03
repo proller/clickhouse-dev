@@ -2,7 +2,7 @@
 
 pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 for i in {1..5}; do
-${pwd}/test.sh --random &
+${pwd}/test.sh --random --testname &
 done
 
 for job in `jobs -p`; do

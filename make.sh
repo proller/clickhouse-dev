@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-if [[ "$OSTYPE" == "freebsd"* ]]; then
+if [[ "$OSTYPE" == "FreeBSD"* ]]; then
 TIMEV=""
 else
 TIMEV="-v"
