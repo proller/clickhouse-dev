@@ -2,8 +2,8 @@
 
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-${CC:=`bash -c "compgen -c gcc | grep 'gcc-[[:digit:]]' | sort --version-sort --reverse | head -n1"`}
-${CXX:=`bash -c "compgen -c g++ | grep 'g++-[[:digit:]]' | sort --version-sort --reverse | head -n1"`}
+CC=${CC:=`bash -c "compgen -c gcc | grep 'gcc-[[:digit:]]' | sort --version-sort --reverse | head -n1"`}
+CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++-[[:digit:]]' | sort --version-sort --reverse | head -n1"`}
 
 mkdir -p $CURDIR/../build$BUILD_TYPE && cd $CURDIR/../build$BUILD_TYPE
 
