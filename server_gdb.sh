@@ -15,3 +15,5 @@ $GDB -ex run --args $CURDIR/../build${BUILD_TYPE}/dbms/src/Server/clickhouse ser
 
 # -ex 'set pagination off' -ex 'set logging on' -ex "set logging file gdb.log" -ex 'continue' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit'
 # gdb -ex run  -batch -ex 'set pagination off' -ex 'set logging on' -ex "set logging file gdb.log" -ex 'continue' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit' --args clickhouse --server --config=config.xml
+# trace to file from core:
+# gdb -batch -ex 'set pagination off' -ex 'set logging on' -ex "set logging file gdb.log" -ex 'backtrace' -ex 'thread apply all backtrace' -ex 'quit' clickhouse    .core

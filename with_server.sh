@@ -4,8 +4,7 @@ set -e
 # USAGE:
 # BUILD_TYPE=_debug ./with_server.sh ./test_performance.sh
 
-#pwd=`pwd`
-pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 #cd ..
 killall clickhouse || true
 
@@ -18,13 +17,18 @@ killall clickhouse || true
 
 trap 'kill -TERM $pid; wait $pid' TERM
 
+
+$CURDIR/server.sh &
+#$CURDIR/server_gdb.sh
+#$CURDIR/server_valgrind.sh
+
 #gdb -ex run --args \
 #valgrind \
-../build$BUILD_TYPE/dbms/src/Server/clickhouse --server --config-file=./config.xml &
-#server.sh &
+#../build$BUILD_TYPE/dbms/src/Server/clickhouse server --config-file=./config.xml &
+
 pid=$!
 #sleep 20
-cd $pwd
+cd $CURDIR
 
 (sleep 3 && eval $*)
 
