@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-cd ${pwd}/../dbms/tests/
+CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+cd ${CURDIR}/../dbms/tests/
 
 # env CLICKHOUSE_URL=http://localhost:18123/
 
-#./clickhouse-test --no-shard --no-zookeeper -c "${pwd}/../build$BUILD_TYPE/dbms/src/Server/clickhouse --client --ssl --port 9440 --config ${pwd}/clickhouse-client.xml" $*
-./clickhouse-test --testname --no-shard --no-zookeeper -c "${pwd}/../build$BUILD_TYPE/dbms/src/Server/clickhouse --client  --config ${pwd}/clickhouse-client.xml" $*
-#./clickhouse-test                                     -c "${pwd}/../build$BUILD_TYPE/dbms/src/Server/clickhouse --client --ssl --port 9440 --config ${pwd}/clickhouse-client.xml" $*
-# --no-shard --no-zookeeper
+./clickhouse-test --testname --no-shard --no-zookeeper -c "${CURDIR}/../build$BUILD_TYPE/dbms/src/Server/clickhouse-client  --config ${CURDIR}/clickhouse-client.xml" $*
+
+# --no-shard --no-zookeeper --ssl --port 9440
