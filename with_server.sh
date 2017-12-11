@@ -12,7 +12,7 @@ killall clickhouse || true
 
 ("./build.sh")
 
-#(sleep 16 && clickhouse --client -m -n < ../dbms/tests/queries/0_stateless/00314_sample_factor_virtual_column.sql) &
+#(sleep 16 && clickhouse-client -m -n < ../dbms/tests/queries/0_stateless/00314_sample_factor_virtual_column.sql) &
 #(sleep 16 && $*) &
 
 trap 'kill -TERM $pid; wait $pid' TERM
@@ -24,7 +24,7 @@ $CURDIR/server.sh &
 
 #gdb -ex run --args \
 #valgrind \
-#../build$BUILD_TYPE/dbms/src/Server/clickhouse server --config-file=./config.xml &
+#../build$BUILD_TYPE/dbms/src/Server/clickhouse-server --config-file=./config.xml &
 
 pid=$!
 #sleep 20
