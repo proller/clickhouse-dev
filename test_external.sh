@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 #./clickhouse-test -c "../../clang_msan/dbms/src/Server/clickhouse-client --config ${CURDIR}/config-client.xml "
 #./clickhouse-test --no-shard -c "../../build/dbms/src/Server/clickhouse-client --config ${CURDIR}/config-client.xml "
 
