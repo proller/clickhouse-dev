@@ -3,6 +3,7 @@
 set -x
 
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 
 CC=${CC:=`bash -c "compgen -c gcc | grep 'gcc-[[:digit:]]' | sort --version-sort --reverse | head -n1"`}
 CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++-[[:digit:]]' | sort --version-sort --reverse | head -n1"`}

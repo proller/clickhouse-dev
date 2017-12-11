@@ -7,3 +7,5 @@ cd ${pwd}/../dbms/tests/
 
 #./clickhouse-test --no-shard --no-zookeeper -c "${pwd}/../build$BUILD_TYPE/dbms/src/Server/clickhouse --client --ssl --port 9440 --config ${pwd}/clickhouse-client.xml" $*
 ./clickhouse-test --testname --no-shard --no-zookeeper -c "${pwd}/../build$BUILD_TYPE/dbms/src/Server/clickhouse --client  --config ${pwd}/clickhouse-client.xml" $*
+#./clickhouse-test                                     -c "${pwd}/../build$BUILD_TYPE/dbms/src/Server/clickhouse --client --ssl --port 9440 --config ${pwd}/clickhouse-client.xml" $*
+# --no-shard --no-zookeeper

@@ -2,7 +2,7 @@
 set -e
 
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-
+export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 export ASAN_OPTIONS=${ASAN_OPTIONS:="abort_on_error=1"}
 
 #export BUILD_TYPE=${BUILD_TYPE:=_debug}

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+
 set -e
 
-pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-${pwd}/build.sh
-${pwd}/server.sh $*
+CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+export BUILD_TYPE=${BUILD_TYPE:="_debug"}
+${CURDIR}/build.sh
+${CURDIR}/server.sh $*
