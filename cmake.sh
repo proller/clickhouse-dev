@@ -10,6 +10,8 @@ CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++-[[:digit:]]' | sort --version-so
 
 mkdir -p $CURDIR/../build$BUILD_TYPE && cd $CURDIR/../build$BUILD_TYPE
 
+rm $CURDIR/../build$BUILD_TYPE/CMakeCache.txt
+
 if [[ "$OSTYPE" == "FreeBSD"* ]]; then
     CMAKE_OS="-DCOMPILER_FLAGS='-DLZ4_DISABLE_DEPRECATE_WARNINGS=1' -DUNBUNDLED=1"
 else
