@@ -6,7 +6,7 @@ set -e
 
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 #cd ..
-killall clickhouse || true
+killall clickhouse clickhouse-server || true
 
 #BUILD_TYPE=_asan
 
