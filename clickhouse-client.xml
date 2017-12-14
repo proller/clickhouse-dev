@@ -1,22 +1,40 @@
 <?xml version="1.0"?>
 <config>
-	<http_port>18123</http_port>
-	<tcp_port>19000</tcp_port>
-	<interserver_http_port>19009</interserver_http_port>
-	<port>19000</port>
+	<http_port>8123</http_port>
+	<!--tcp_port>9000</tcp_port-->
+	<interserver_http_port>9009</interserver_http_port>
+	<!--port>9000</port-->
 
-    <openSSL>
-        <client> <!-- Used for connection to server's secure tcp port -->
-            <loadDefaultCAFile>true</loadDefaultCAFile>
-            <cacheSessions>true</cacheSessions>
-            <disableProtocols>sslv2,sslv3</disableProtocols>
-            <preferServerCiphers>true</preferServerCiphers>
-            <verificationMode>none</verificationMode>
-            <invalidCertificateHandler>
-                <name>AcceptCertificateHandler</name>
-                <name>RejectCertificateHandler</name>
-            </invalidCertificateHandler>
-        </client>
-    </openSSL>
+	<openSSL>
+		<server>
+			<!-- openssl req -subj "/CN=localhost" -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -out server.crt -->
+			<certificateFile>server.crt</certificateFile>
+			<privateKeyFile>server.key</privateKeyFile>
+			<!-- openssl dhparam -out dhparam.pem 4096 -->
+			<dhParamsFile>dhparam.pem</dhParamsFile>
+			<loadDefaultCAFile>true</loadDefaultCAFile>
+			<cacheSessions>true</cacheSessions>
+			<disableProtocols>sslv2,sslv3</disableProtocols>
+			<preferServerCiphers>true</preferServerCiphers>
+			<invalidCertificateHandler>
+				<name>AcceptCertificateHandler</name>
+				<zname>RejectCertificateHandler</zname>
+			</invalidCertificateHandler>
 
+		</server>
+		<client>
+			<!--certificateFile>client.crt</certificateFile>
+
+			<privateKeyFile>client.key</privateKeyFile-->
+			<loadDefaultCAFile>true</loadDefaultCAFile>
+			<cacheSessions>true</cacheSessions>
+			<disableProtocols>sslv2,sslv3</disableProtocols>
+			<preferServerCiphers>true</preferServerCiphers>
+			<verificationMode>none</verificationMode>
+			<invalidCertificateHandler>
+				<name>AcceptCertificateHandler</name>
+				<zname>RejectCertificateHandler</zname>
+			</invalidCertificateHandler>
+		</client>
+	</openSSL>
 </config>

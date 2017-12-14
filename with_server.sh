@@ -19,6 +19,9 @@ trap 'kill -TERM $pid; wait $pid' TERM
 
 
 $CURDIR/server.sh &
+
+#(sleep 25 && eval $*)
+
 #$CURDIR/server_gdb.sh
 #$CURDIR/server_valgrind.sh
 
