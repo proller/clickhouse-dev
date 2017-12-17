@@ -4,8 +4,6 @@ CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 cd ${CURDIR}/../dbms/tests/
 
-export BUILD_TYPE=${BUILD_TYPE:="_debug"}
-
 # env CLICKHOUSE_URL=http://localhost:18123/
 
 export CLICKHOUSE_CONFIG=${CLICKHOUSE_CONFIG:=$CURDIR/config.xml}
