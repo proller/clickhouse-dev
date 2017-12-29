@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-for i in {1..5}; do
-${pwd}/test.sh --random --testname &
+CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+PROC=${PROC:=$(( `nproc || sysctl -n hw.ncpu || echo 2` * 2))}
+for i in `seq 1 ${PROC}`; do
+    ${CURDIR}/test.sh --order=random --testname &
 done
 
 # for i in {1..5000}; do
