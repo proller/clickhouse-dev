@@ -21,5 +21,5 @@ fi
 set -e
 
 cd $BUILD_DIR
-# env -u CCACHE_PREFIX
+# env -u CCACHE_PREFIX \
 TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 make $MAKEJ $MAKEL clickhouse-bundle $*

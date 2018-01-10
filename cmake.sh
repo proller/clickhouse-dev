@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -e
 set -x
 
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
@@ -12,7 +12,7 @@ CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++-[[:digit:]]' | sort --version-so
 
 mkdir -p $BUILD_DIR && cd $BUILD_DIR
 
-rm $BUILD_DIR/CMakeCache.txt
+rm $BUILD_DIR/CMakeCache.txt || true
 
 if [[ "$OSTYPE" == "FreeBSD"* ]]; then
     CMAKE_OS=" -DCOMPILER_FLAGS='-DLZ4_DISABLE_DEPRECATE_WARNINGS=1' -DUNBUNDLED=1 "
