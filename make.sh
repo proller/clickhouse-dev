@@ -9,8 +9,16 @@ if [[ "$OSTYPE" == "FreeBSD"* ]]; then
     TIMEV=""
 else
     TIMEV="-v"
+    MAKEL="-j $(nproc || sysctl -n hw.ncpu || echo 2)"
+fi
+
+if [[ `distcc --show-hosts | wc -l` == "0" ]]; then
+    export -n CCACHE_PREFIX
+    MAKEJ="-j $(nproc || sysctl -n hw.ncpu || echo 2)"
+else
+    MAKEJ="-j `distcc -j`"
 fi
 
 cd $BUILD_DIR
 # env -u CCACHE_PREFIX
-TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 make -j$(nproc || sysctl -n hw.ncpu || echo 2) clickhouse-bundle $*
+TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 make $MAKEJ $MAKEL clickhouse-bundle $*
