@@ -11,7 +11,7 @@ else
     MAKEL="-j $(nproc || sysctl -n hw.ncpu || echo 2)"
 fi
 
-if [[ $(`distcc --show-hosts | wc -l` || echo 0) == "0" ]]; then
+if [[ $(echo `distcc --show-hosts | wc -l` || echo 0) == "0" ]]; then
     export -n CCACHE_PREFIX
     MAKEJ="-j $(nproc || sysctl -n hw.ncpu || echo 2)"
 else
