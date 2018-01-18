@@ -6,7 +6,7 @@ export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 export ASAN_OPTIONS=${ASAN_OPTIONS:="abort_on_error=1,detect_odr_violation=0"}
 
 #export BUILD_TYPE=${BUILD_TYPE:=_debug}
-#$CURDIR/build.sh
+#. $CURDIR/build.sh
 
 GDB=${GDB:=`bash -c "compgen -c gdb | grep 'gdb[[:digit:]]' | sort --version-sort --reverse | head -n1"`}
 GDB=${GDB:=gdb}

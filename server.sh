@@ -4,5 +4,7 @@ set -e
 
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 export BUILD_TYPE=${BUILD_TYPE:="_debug"}
-# ${CURDIR}/build.sh
-${CURDIR}/../build$BUILD_TYPE/dbms/src/Server/clickhouse-server --config=$CURDIR/config.xml $* 2>&1 | tee server.$BUILD_TYPE.log
+#. ${CURDIR}/build.sh
+
+#env PATH=$PATH:${CURDIR}/../build$BUILD_TYPE/dbms/src/Server/ \
+ ${CURDIR}/../build$BUILD_TYPE/dbms/src/Server/clickhouse-server --config=$CURDIR/config.xml $* 2>&1 | tee server.$BUILD_TYPE.log
