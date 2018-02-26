@@ -23,7 +23,7 @@ fi
 if [[ `uname -i ` == "aarch64" ]]; then
     CMAKE_OS+=""
 else
-    CMAKE_OS+=" -DUSE_EMBEDDED_COMPILER=1 "
+    CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=1 "
 fi
 
 
