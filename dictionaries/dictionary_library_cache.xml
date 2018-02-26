@@ -7,7 +7,7 @@
 
     <library>
         <zfilename>../build/dbms/tests/external_dictionaries/dictionary_library/libdictionary_library_c.so</zfilename>
-        <path>../build/dbms/tests/external_dictionaries/dictionary_library/libdictionary_library.so</path>
+        <path>../build_debug/dbms/tests/external_dictionaries/dictionary_library/libdictionary_library.so</path>
         <zzfilename>../build/dbms/tests/external_dictionaries/dictionary_library/dictionary_library_empty.so</zzfilename>
         <settings>
           <key1>value1</key1>
