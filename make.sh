@@ -4,7 +4,9 @@ CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 export BUILD_DIR=${BUILD_DIR:="$CURDIR/../build$BUILD_TYPE"}
 
-if [[ "$OSTYPE" == "FreeBSD"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    TIMEV=""
+elif [[ "$OSTYPE" == "FreeBSD"* ]]; then
     TIMEV=""
 else
     TIMEV="-v"

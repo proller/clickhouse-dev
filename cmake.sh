@@ -7,8 +7,17 @@ export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 export BUILD_DIR=${BUILD_DIR:="$CURDIR/../build$BUILD_TYPE"}
 export CH_DIR=${CH_DIR:="$CURDIR/.."}
 
-CC=${CC:=`bash -c "compgen -c gcc | grep 'gcc-[[:digit:]]' | sort --version-sort --reverse | head -n1"`}
-CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++-[[:digit:]]' | sort --version-sort --reverse | head -n1"`}
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    SORT_VERSION=""
+else
+    SORT_VERSION="--version-sort"
+fi
+
+CC=${CC:=`bash -c "compgen -c gcc | grep 'gcc-[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
+CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++-[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
+
+CC=${CC:=gcc}
+CXX=${CXX:=g++}
 
 mkdir -p $BUILD_DIR && cd $BUILD_DIR
 
@@ -20,7 +29,7 @@ else
     CMAKE_OS=" -DCMAKE_CXX_COMPILER=`which ${CXX}` -DCMAKE_C_COMPILER=`which ${CC}` -DCMAKE_ASM_COMPILER=`which ${CC}` "
 fi
 
-if [[ `uname -i ` == "aarch64" ]]; then
+if [[ `uname -i || echo ""` == "aarch64" ]]; then
     CMAKE_OS+=""
 else
     CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=1 "
