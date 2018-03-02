@@ -16,6 +16,8 @@ fi
 if [[ $(echo `distcc --show-hosts | wc -l` || echo 0) == "0" ]]; then
     export -n CCACHE_PREFIX
     MAKEJ="-j $(nproc || sysctl -n hw.ncpu || echo 2)"
+elif [[ `uname -i || echo ""` == "aarch64" ]]; then
+    MAKEJ="-j 1"
 else
     MAKEJ="-j $(distcc -j || echo 0)"
 fi
