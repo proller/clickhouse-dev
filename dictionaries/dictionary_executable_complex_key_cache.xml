@@ -1,0 +1,42 @@
+<!--
+  SELECT dictGetString('geolite2_city', 'iso_code', tuple('8.8.8.8'));
+-->
+<dictionaries>
+<dictionary>
+    <name>geolite2_city</name>
+    <source>
+       <executable>
+            <zcommand>tee /usr/share/GeoIP/test.log | /usr/share/GeoIP/get_country.py</zcommand>
+            <command>tee /home/proller/ClickHouse4/dev/dictionaries//test.log | echo "{}"</command>
+            <format>JSONEachRow</format>
+        </executable>
+    </source>
+    <layout>
+        <complex_key_cache>
+            <size_in_cells>10000</size_in_cells>
+        </complex_key_cache>
+    </layout>
+    <structure>
+        <key>
+            <attribute>
+                <name>ip</name>
+                <type>String</type>
+            </attribute>
+        </key>
+        <attribute>
+            <name>geoname_id</name>
+            <type>UInt32</type>
+            <null_value>0</null_value>
+        </attribute>
+        <attribute>
+            <name>iso_code</name>
+            <type>String</type>
+            <null_value></null_value>
+        </attribute>
+    </structure>
+    <lifetime>
+        <min>3500</min>
+        <max>3500</max>
+    </lifetime>
+</dictionary>
+</dictionaries>
