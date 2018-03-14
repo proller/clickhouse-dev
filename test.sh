@@ -8,6 +8,6 @@ cd ${CURDIR}/../dbms/tests/
 
 export CLICKHOUSE_CONFIG=${CLICKHOUSE_CONFIG:=$CURDIR/config.xml}
 
-./clickhouse-test --testname --binary ${CURDIR}/../build$BUILD_TYPE/dbms/src/Server/clickhouse --configclient ${CURDIR}/clickhouse-client.xml $*
+./clickhouse-test --testname --binary ${CURDIR}/../build$BUILD_TYPE/dbms/src/Server/clickhouse --configclient ${CURDIR}/clickhouse-client.xml --configserver ${CURDIR}/config.xml $*
 
 # --no-shard --no-zookeeper --ssl --port 9440
