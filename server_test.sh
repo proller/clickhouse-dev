@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# env TEST_OPT="505" bash -x ./server_test.sh
+
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 
