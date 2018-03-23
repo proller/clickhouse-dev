@@ -18,6 +18,8 @@ if [[ $(echo `distcc --show-hosts | wc -l` || echo 0) == "0" ]]; then
     MAKEJ="-j $(nproc || sysctl -n hw.ncpu || echo 2)"
 elif [[ `uname -i || echo ""` == "aarch64" ]]; then
     MAKEJ="-j 1"
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    IONICE="ionice -c Idle"
 else
     MAKEJ="-j $(distcc -j || echo 0)"
 fi
@@ -26,4 +28,4 @@ set -e
 
 cd $BUILD_DIR
 # env -u CCACHE_PREFIX \
-TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 make $MAKEJ $MAKEL clickhouse-bundle $*
+TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE make $MAKEJ $MAKEL clickhouse-bundle $*

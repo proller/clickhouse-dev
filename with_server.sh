@@ -10,7 +10,7 @@ killall clickhouse clickhouse-server || true
 
 #BUILD_TYPE=_asan
 
-("./build.sh")
+("${CURDIR}/build.sh")
 
 #(sleep 16 && clickhouse-client -m -n < ../dbms/tests/queries/0_stateless/00314_sample_factor_virtual_column.sql) &
 #(sleep 16 && $*) &
