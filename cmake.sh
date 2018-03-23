@@ -34,6 +34,8 @@ CMAKE_OS+=" -DCMAKE_CXX_COMPILER=`which ${CXX}` -DCMAKE_C_COMPILER=`which ${CC}`
 
 if [[ `uname -i || echo ""` == "aarch64" ]]; then
     CMAKE_OS+=" -DUSE_INTERNAL_ZOOKEEPER_LIBRARY=0 "
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    CMAKE_OS+=""
 else
     CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=1 "
 fi

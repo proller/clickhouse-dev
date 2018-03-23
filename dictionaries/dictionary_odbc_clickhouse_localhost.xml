@@ -1,0 +1,37 @@
+<dictionaries>
+<dictionary>
+    <name>odbc_clickhouse_localhost</name>
+    <source>
+        <odbc>
+            <!-- You can specifiy the following parameters in connection_string: -->
+            <!-- DSN=myconnection;UID=username;PWD=password;HOST=127.0.0.1;PORT=5432;DATABASE=my_db -->
+            <connection_string>DSN=clickhouse_localhost</connection_string>
+            <table>system.build_options</table>
+        </odbc>
+    </source>
+    <lifetime>
+        <min>5</min>
+        <max>10</max>
+    </lifetime>
+    <layout>
+        <complex_key_hashed/>
+    </layout>
+
+    <structure>
+        <zzid>
+            <name>id</name>
+        </zzid>
+	<key>
+            <attribute>
+                <name>name</name>
+                <type>String</type>
+            </attribute>
+	</key>
+        <attribute>
+            <name>value</name>
+            <type>String</type>
+	    <null_value>0</null_value> 
+        </attribute>
+    </structure>
+</dictionary>
+</dictionaries>
