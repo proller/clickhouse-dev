@@ -27,5 +27,11 @@ fi
 set -e
 
 cd $BUILD_DIR
+if [ -f rules.ninja ]; then
+    MAKE=ninja
+else
+    MAKE=make
+fi
+
 # env -u CCACHE_PREFIX \
-TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE make $MAKEJ $MAKEL clickhouse-bundle $*
+TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE $MAKE $MAKEJ $MAKEL clickhouse-bundle $*
