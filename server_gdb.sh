@@ -14,9 +14,9 @@ GDB=${GDB:=gdb}
 LLDB=${LLDB:=`bash -c "compgen -c lldb | grep 'lldb[[:digit:]]' | sort --version-sort --reverse | head -n1"`}
 LLDB=${LLDB:=lldb}
 
-#$LLDB -ex run $CURDIR/../build${BUILD_TYPE}/dbms/src/Server/clickhouse-server --config=config.xml
-
-$GDB -ex run --args $CURDIR/../build${BUILD_TYPE}/dbms/src/Server/clickhouse-server --config=config.xml
+# $LLDB -ex run \
+$GDB -ex run --args \
+$CURDIR/../build${BUILD_TYPE}/dbms/src/Server/clickhouse-server --config=config.xml
 
 # -ex 'set pagination off' -ex "set logging file gdb.log" -ex 'set logging on' -ex 'continue' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit'
 # gdb -ex run  -batch -ex 'set pagination off' -ex "set logging file gdb.log" -ex 'set logging on' -ex 'continue' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit' --args clickhouse-server --config=config.xml
