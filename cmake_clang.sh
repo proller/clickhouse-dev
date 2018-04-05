@@ -25,6 +25,9 @@ CXX=${CXX:=`bash -c "compgen -c clang++ | grep 'clang++$COMPILER_MINUS[[:digit:]
 CC=${CC:=clang}
 CXX=${CXX:=clang++}
 
+#CC=clang-5.0
+#CXX=clang++-5.0
+
 set -e
 
 if [[ "$OSTYPE" == "FreeBSD"* ]]; then
