@@ -33,5 +33,8 @@ else
     MAKE=make
 fi
 
+MAKE_TARGET=${MAKE_TARGET:=$*}
+MAKE_TARGET=${MAKE_TARGET:=clickhouse-bundle}
+
 # env -u CCACHE_PREFIX \
-TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE $MAKE $MAKEJ $MAKEL clickhouse-bundle $*
+TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE $MAKE $MAKEJ $MAKEL $MAKE_TARGET

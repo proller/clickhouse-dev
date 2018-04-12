@@ -4,6 +4,9 @@ export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 
 CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
+export MAKE_TARGET=clickhouse-server
+. $CUR_DIR/make.sh
+
 #GDB=${GDB:=`bash -c "compgen -c gdb | grep 'gdb[[:digit:]]' | sort --version-sort --reverse | head -n1"`}
 #GDB=${GDB:=gdb}
 #LLDB=${LLDB:=`bash -c "compgen -c lldb | grep 'lldb[[:digit:]]' | sort --version-sort --reverse | head -n1"`}

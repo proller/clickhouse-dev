@@ -1,0 +1,35 @@
+<dictionaries>
+<dictionary>
+    <name>odbc_sqlite</name>
+    <source>
+        <odbc>
+            <connection_string>DSN=SQLite3;Database=dictionary.sqlite;</connection_string>
+            <table>test</table>
+        </odbc>
+    </source>
+    <lifetime>
+        <min>35</min>
+        <max>100</max>
+    </lifetime>
+    <layout>
+        <complex_key_hashed/>
+    </layout>
+
+    <structure>
+        <zzid>
+            <name>id</name>
+        </zzid>
+	<key>
+            <attribute>
+                <name>name</name>
+                <type>String</type>
+            </attribute>
+	</key>
+        <attribute>
+            <name>value</name>
+            <type>String</type>
+	    <null_value>0</null_value> 
+        </attribute>
+    </structure>
+</dictionary>
+</dictionaries>
