@@ -6,7 +6,7 @@ cd ${CURDIR}/../dbms/tests/
 
 # env CLICKHOUSE_URL=http://localhost:18123/
 
-export CLICKHOUSE_CONFIG=${CLICKHOUSE_CONFIG:=$CURDIR/config.xml}
+#export CLICKHOUSE_CONFIG=${CLICKHOUSE_CONFIG:=$CURDIR/config.xml}
 
 ./clickhouse-test --testname --binary ${CURDIR}/../build$BUILD_TYPE/dbms/src/Server/clickhouse --configclient ${CURDIR}/clickhouse-client.xml --configserver ${CURDIR}/config.xml $*
 
