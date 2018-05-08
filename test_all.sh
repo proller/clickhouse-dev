@@ -8,9 +8,9 @@ CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 for type in _debug _clang clang_asan _asan _release; do
 
 export BUILD_TYPE=$type
-#sh $CUR_DIR/build.sh all
-. $CUR_DIR/make.sh all
-. $CUR_DIR/ctest.sh
+bash $CUR_DIR/build.sh
+#bash $CUR_DIR/make.sh all
+bash $CUR_DIR/ctest.sh
 
 done
 
