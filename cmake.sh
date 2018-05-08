@@ -46,9 +46,9 @@ fi
 if [[ `uname -i || echo ""` == "aarch64" ]]; then
     CMAKE_OS+=" -DUSE_INTERNAL_ZOOKEEPER_LIBRARY=0 "
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    CMAKE_OS+=""
+    CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
 else
-    CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=1 "
+    CMAKE_OS+=""
 fi
 
 if [ -n "" ]; then
