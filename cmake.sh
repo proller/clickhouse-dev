@@ -19,6 +19,13 @@ fi
 CC=${CC:=`bash -c "compgen -c gcc | grep 'gcc${COMPILER_MINUS}[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
 CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++${COMPILER_MINUS}[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
 
+#/usr/lib/gcc/x86_64-linux-gnu/8/include/immintrin.h:113:10: fatal error: movdirintrin.h: No such file or directory
+# #include <movdirintrin.h>
+if [[ `lsb_release -sc` == "trusty" && "$CC" == "gcc-8" ]]; then
+    CC=gcc-7
+    CXX=g++-7
+fi
+
 CC=${CC:=gcc}
 CXX=${CXX:=g++}
 
