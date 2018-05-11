@@ -9,5 +9,5 @@ NAME=${NAME:="odbc_clickhouse_localhost.sql"}
 
 #cd ..
 . $DCURDIR/../cmake.sh
-. $DCURDIR/../with_server.sh "cat $DCURDIR/$NAME | grep -v '^--' | ${CURDIR}/../build$BUILD_TYPE//dbms/src/Server/clickhouse-client --config=clickhouse-client.xml -m -n"
+. $DCURDIR/../with_server.sh "cat $DCURDIR/$NAME | grep -v '^--' | ${CURDIR}/../build$BUILD_TYPE/dbms/src/Server/clickhouse-client --config=clickhouse-client.xml -m -n"
 
