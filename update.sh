@@ -5,6 +5,6 @@ CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd ${CURDIR}/..
 
 git remote add upstream https://github.com/yandex/ClickHouse.git
-git pull && git merge upstream/master && git push
+git pull && git merge --no-edit upstream/master && git push
 
 cd ${CURDIR}
