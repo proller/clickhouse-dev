@@ -5,7 +5,7 @@ set -x
 
 CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-for type in _debug _clang clang_asan _asan _release; do
+for type in _debug _clang _clang_asan _clang_tsan _asan _tsan _release; do
 
 export BUILD_TYPE=$type
 bash $CUR_DIR/build.sh
