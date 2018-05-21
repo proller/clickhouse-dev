@@ -2,6 +2,10 @@
 
 #UPDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+cd ${CURDIR}
+git pull
+
 cd ${CURDIR}/..
 
 git remote add upstream https://github.com/yandex/ClickHouse.git
