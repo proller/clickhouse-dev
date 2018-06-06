@@ -4,13 +4,13 @@
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 cd ${CURDIR}
-git pull
+git pull --rebase
 
 cd ${CURDIR}/..
 
 git remote add upstream https://github.com/yandex/ClickHouse.git
 git fetch --all
 git pull --rebase
-git pull && git merge --no-edit upstream/master && git push
+git pull && git merge --no-edit upstream/master && git push && git submodule update --init --recursive
 
 cd ${CURDIR}
