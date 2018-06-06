@@ -27,7 +27,7 @@ $CURDIR/server.sh &
 
 #gdb -ex run --args \
 #valgrind \
-#../build$BUILD_TYPE/dbms/src/Server/clickhouse-server --config-file=./config.xml &
+#../build$BUILD_TYPE/dbms/programs/clickhouse-server --config-file=./config.xml &
 
 pid=$!
 #sleep 20

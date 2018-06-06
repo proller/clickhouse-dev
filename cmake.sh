@@ -19,13 +19,6 @@ fi
 CC=${CC:=`bash -c "compgen -c gcc | grep 'gcc${COMPILER_MINUS}[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
 CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++${COMPILER_MINUS}[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
 
-#/usr/lib/gcc/x86_64-linux-gnu/8/include/immintrin.h:113:10: fatal error: movdirintrin.h: No such file or directory
-# #include <movdirintrin.h>
-if [[ `lsb_release -sc` == "trusty" && "$CC" == "gcc-8" ]]; then
-    CC=gcc-7
-    CXX=g++-7
-fi
-
 CC=${CC:=gcc}
 CXX=${CXX:=g++}
 
@@ -54,7 +47,7 @@ fi
 if [ -n "" ]; then
     #ln -s $BUILD_DIR/dbms/src/Common/config_version.h  $CH_DIR/dbms/src/Common/config_version.h || true
     #CMAKE_OS+=" -DINTERNAL_COMPILER_HEADERS=${CH_DIR} -DINTERNAL_COMPILER_HEADERS_ROOT=/usr/share/clickhouse/headers/ "
-    CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=$BUILD_DIR/dbms/src/Server/clickhouse-clang -DINTERNAL_LINKER_EXECUTABLE=$BUILD_DIR/dbms/src/Server/clickhouse-lld "
+    CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=$BUILD_DIR/dbms/programs/clickhouse-clang -DINTERNAL_LINKER_EXECUTABLE=$BUILD_DIR/dbms/programs/clickhouse-lld "
 fi
 
 cmake $CH_DIR -DNO_WERROR=1 -DUSE_STATIC_LIBRARIES=0 -DSPLIT_SHARED_LIBRARIES=1 -DCLICKHOUSE_SPLIT_BINARY=1 -DCMAKE_BUILD_TYPE=Debug -DSAN_DEBUG=1 $CMAKE_OS \
