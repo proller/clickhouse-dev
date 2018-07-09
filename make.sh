@@ -27,14 +27,19 @@ fi
 set -e
 
 cd $BUILD_DIR
-if [ -f rules.ninja ]; then
-    MAKE=ninja
-else
-    MAKE=make
-fi
 
 MAKE_TARGET=${MAKE_TARGET:=$*}
 MAKE_TARGET=${MAKE_TARGET:=clickhouse-bundle}
 
 # env -u CCACHE_PREFIX \
-TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE $MAKE $MAKEJ $MAKEL $MAKE_TARGET
+TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE cmake --build . -- $MAKEJ $MAKEL $MAKE_TARGET
+
+
+
+#old:
+#if [ -f rules.ninja ]; then
+#    MAKE=ninja
+#else
+#    MAKE=make
+#fi
+#TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE $MAKE $MAKEJ $MAKEL $MAKE_TARGET
