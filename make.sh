@@ -18,10 +18,12 @@ if [[ $(echo `distcc --show-hosts | wc -l` || echo 0) == "0" ]]; then
     MAKEJ="-j $(nproc || sysctl -n hw.ncpu || echo 2)"
 elif [[ `uname -i || echo ""` == "aarch64" ]]; then
     MAKEJ="-j 1"
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    IONICE="ionice -c Idle"
 else
     MAKEJ="-j $(distcc -j || echo 0)"
+fi
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    IONICE="ionice -c Idle"
 fi
 
 set -e
