@@ -22,6 +22,10 @@ CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++${COMPILER_MINUS}[[:digit:]]' | s
 CC=${CC:=gcc}
 CXX=${CXX:=g++}
 
+#CC=gcc-7
+#CXX=g++-7
+
+
 mkdir -p $BUILD_DIR && cd $BUILD_DIR
 
 rm $BUILD_DIR/CMakeCache.txt || true
@@ -62,5 +66,6 @@ $*
 # -DCMAKE_EXE_LINKER_FLAGS=-v
 
 #cmake .. -DCMAKE_CXX_COMPILER=`which ${CXX}` -DCMAKE_C_COMPILER=`which ${CC}` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug $*
+#cmake .. -DCMAKE_CXX_COMPILER=`which g++-8` -DCMAKE_C_COMPILER=`which gcc-8` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
 #cmake .. -DCMAKE_CXX_COMPILER=`which g++-7` -DCMAKE_C_COMPILER=`which gcc-7` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
 #cmake .. -DCMAKE_CXX_COMPILER=`which g++-6` -DCMAKE_C_COMPILER=`which gcc-6` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
