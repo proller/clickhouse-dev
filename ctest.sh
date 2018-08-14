@@ -23,8 +23,10 @@ else
     MAKEJ="-j $(distcc -j || echo 0)"
 fi
 
+[ -z "$NO_V" ] && V=-V
+
 set -e
 
 cd $BUILD_DIR
 
-TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE ctest -V $MAKEJ
+TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE ctest $V $MAKEJ
