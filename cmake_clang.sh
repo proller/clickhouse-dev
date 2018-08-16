@@ -18,9 +18,9 @@ fi
 
 set +e
 
-CC=${CC:=`which clang-devel`}
+#CC=${CC:=`which clang-devel`}
 CC=${CC:=`bash -c "compgen -c clang | grep 'clang$COMPILER_MINUS[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
-CXX=${CXX:=`which clang++-devel`}
+#CXX=${CXX:=`which clang++-devel`}
 CXX=${CXX:=`bash -c "compgen -c clang++ | grep 'clang++$COMPILER_MINUS[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
 CC=${CC:=clang}
 CXX=${CXX:=clang++}

@@ -1,9 +1,15 @@
 <?xml version="1.0"?>
 <config>
+	<host>2002:50f0:d845:1010::1</host>
 	<http_port>8123</http_port>
-	<!--tcp_port>9000</tcp_port-->
+	<tcp_port>9000</tcp_port>
 	<interserver_http_port>9009</interserver_http_port>
-	<!--port>9000</port-->
+	<port>9000</port>
+
+	<http_port>18123</http_port>
+	<tcp_port>19000</tcp_port>
+	<interserver_http_port>19009</interserver_http_port>
+	<port>19000</port>
 
 	<openSSL>
 		<server>

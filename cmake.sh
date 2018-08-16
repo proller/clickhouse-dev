@@ -31,8 +31,13 @@ mkdir -p $BUILD_DIR && cd $BUILD_DIR
 rm $BUILD_DIR/CMakeCache.txt || true
 
 if [[ "$OSTYPE" == "FreeBSD"* ]]; then
-    CMAKE_OS+=" -DCOMPILER_FLAGS='-DLZ4_DISABLE_DEPRECATE_WARNINGS=1'  -DENABLE_CAPNP=0 "
+    CMAKE_OS+=" -DCOMPILER_FLAGS='-DLZ4_DISABLE_DEPRECATE_WARNINGS=1' "
+#-DENABLE_CAPNP=0 
+    CMAKE_OS+=" -DENABLE_MYSQL=0 "
 fi
+
+#CMAKE_OS+=" -DCXX11_ABI=ENABLE "
+#CMAKE_OS+=" -DCXX11_ABI=0 "
 
 CMAKE_OS+=" -DCMAKE_CXX_COMPILER=`which ${CXX}` -DCMAKE_C_COMPILER=`which ${CC}` -DCMAKE_ASM_COMPILER=`which ${CC}` "
 
@@ -47,6 +52,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 else
     CMAKE_OS+=""
 fi
+    #CMAKE_OS+=" -DUSE_INTERNAL_POCO_LIBRARY=1 -DUSE_INTERNAL_CCTZ_LIBRARY=1 -DUSE_INTERNAL_RE2_LIBRARY=1 -DUSE_INTERNAL_BOOST_LIBRARY=1 "
+    CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
+    #CMAKE_OS+=" -DLLVM_VERSION=7 "
+
+    #CMAKE_OS+=" -DUNBUNDLED=1 "
 
 if [ -n "" ]; then
     #ln -s $BUILD_DIR/dbms/src/Common/config_version.h  $CH_DIR/dbms/src/Common/config_version.h || true
