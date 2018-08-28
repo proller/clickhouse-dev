@@ -7,4 +7,4 @@ export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 #. ${CURDIR}/build.sh
 
 #env PATH=$PATH:${CURDIR}/../build$BUILD_TYPE/dbms/programs/ \
- ${CURDIR}/../build$BUILD_TYPE/dbms/programs/clickhouse-server --config=$CURDIR/config.xml $* 2>&1 | tee $CURDIR/server.$BUILD_TYPE.log
+ ${CURDIR}/../build$BUILD_TYPE/dbms/programs/clickhouse-server --config=$CURDIR/config.xml $* 2>&1 | tee $CURDIR/log$BUILD_TYPE.server.stdout.log
