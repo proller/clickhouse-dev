@@ -35,7 +35,7 @@ CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=clang++-6.0 -DINTERNAL_LINKER_EXECUTA
 set -e
 
 if [[ "$OSTYPE" == "FreeBSD"* ]]; then
-    CMAKE_OS+=" -DUNBUNDLED=1"
+    CMAKE_OS+=" -DUNBUNDLED=1 "
 fi
 
 mkdir -p $CURDIR/../build$BUILD_TYPE && cd $CURDIR/../build$BUILD_TYPE
