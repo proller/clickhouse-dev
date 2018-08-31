@@ -6,4 +6,4 @@ pwd=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 . $pwd/cmake_clang.sh -DSANITIZE=memory -DUNBUNDLED=0 \
  $*
 . $pwd/make.sh
-. $pwd/server.sh | llvm-symbolizer-7 | c++filt
+. $pwd/server.sh | llvm-symbolizer-7 | c++filt | tee log$BUILD_TYPE.msan.log
