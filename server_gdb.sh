@@ -16,7 +16,7 @@ LLDB=${LLDB:=lldb}
 
 # $LLDB -ex run \
 $GDB -ex run --args \
-$CURDIR/../build${BUILD_TYPE}/dbms/programs/clickhouse-server --config=config.xml
+$CURDIR/../build${BUILD_TYPE}/dbms/programs/clickhouse-server --config=config.xml | tee log.$BUILD_TYPE.gdb.log
 
 # -ex 'set pagination off' -ex "set logging file gdb.log" -ex 'set logging on' -ex 'continue' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit'
 # gdb -ex run  -batch -ex 'set pagination off' -ex "set logging file gdb.log" -ex 'set logging on' -ex 'continue' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit' --args clickhouse-server --config=config.xml
