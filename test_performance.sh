@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 export BUILD_TYPE=${BUILD_TYPE="_debug"}
 
 if [[ "$OSTYPE" == "FreeBSD"* ]]; then
@@ -9,9 +9,9 @@ else
     TIMEV="-v"
 fi
 
-extract="${CURDIR}/../build$BUILD_TYPE/dbms/programs/clickhouse-extract-from-config --config-file=${CURDIR}/config.xml"
+extract="${CUR_DIR}/../build$BUILD_TYPE/dbms/programs/clickhouse-extract-from-config --config-file=${CUR_DIR}/config.xml"
 
 #$extract --key=zookeeper
 #exit
 TIME="\t%e,\t%M" /usr/bin/time $TIMEV httperf --num-conns=1000 --rate=1000 --port=`$extract --key=http_port` --uri=/?query=SELECT%201
-TIME="\t%e,\t%M" /usr/bin/time $TIMEV ${CURDIR}/../build$BUILD_TYPE/dbms/programs/clickhouse-performance-test --port `$extract --key=tcp_port` --r ${CURDIR}/../dbms/tests/performance --skip-tags=long $* > ${CURDIR}/performance${BUILD_TYPE}.`hostname`.`date '+%Y%M%''d%H%M%''S'`.json
+TIME="\t%e,\t%M" /usr/bin/time $TIMEV ${CUR_DIR}/../build$BUILD_TYPE/dbms/programs/clickhouse-performance-test --port `$extract --key=tcp_port` --r ${CUR_DIR}/../dbms/tests/performance --skip-tags=long $* > ${CUR_DIR}/performance${BUILD_TYPE}.`hostname`.`date '+%Y%M%''d%H%M%''S'`.json

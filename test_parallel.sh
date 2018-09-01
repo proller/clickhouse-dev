@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 PROC=${PROC:=$(( `nproc || sysctl -n hw.ncpu || echo 2` * 2))}
 for i in `seq 1 ${PROC}`; do
-    . ${CURDIR}/test.sh --order=random --testname &
+    . ${CUR_DIR}/test.sh --order=random --testname &
 done
+
+. ${CUR_DIR}/test_performance.sh &
 
 # for i in {1..5000}; do
 #    sleep 0.1
@@ -12,7 +14,7 @@ done
 # done
 
 for job in `jobs -p`; do
-    echo $job
+    echo wait $job
     wait $job || let "FAIL+=1"
 done
 
