@@ -17,4 +17,8 @@ for job in `jobs -p`; do
 done
 
 echo $FAIL
-if [ "$FAIL" == "0" ]; then; echo "YAY!"; else; echo "FAIL! ($FAIL)"; fi;
+if [ "$FAIL" == "0" ]; then
+    echo "YAY!"
+else
+    echo "FAIL! ($FAIL)"
+fi;

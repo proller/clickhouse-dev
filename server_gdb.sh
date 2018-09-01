@@ -15,11 +15,17 @@ LLDB=${LLDB:=`bash -c "compgen -c lldb | grep 'lldb[[:digit:]]' | sort --version
 LLDB=${LLDB:=lldb}
 
 # $LLDB -ex run \
-$GDB -ex run --args \
-$CURDIR/../build${BUILD_TYPE}/dbms/programs/clickhouse-server --config=config.xml -log=log$BUILD_TYPE.server.log | tee log$BUILD_TYPE.gdb.log
+$GDB -ex run -ex 'set pagination off' -ex "set logging file log$BUILD_TYPE.gdb0.log" -ex 'set logging on' -ex 'continue' -ex 'backtrace' -ex 'thread apply all backtrace' -ex 'backtrace' --args \
+$CURDIR/../build${BUILD_TYPE}/dbms/programs/clickhouse-server --config=config.xml --log=log$BUILD_TYPE.server.log | tee log$BUILD_TYPE.gdb.log
 
 # -ex 'set pagination off' -ex "set logging file gdb.log" -ex 'set logging on' -ex 'continue' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit'
-# gdb -ex run  -batch -ex 'set pagination off' -ex "set logging file gdb.log" -ex 'set logging on' -ex 'continue' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit' --args clickhouse-server --config=config.xml
+# gdb -batch -ex run -ex 'set pagination off' -ex "set logging file gdb.log" -ex 'set logging on' -ex 'continue' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit' --args clickhouse-server --config=config.xml
 # trace to file from core:
 # gdb -batch -ex 'set pagination off' -ex "set logging file gdb.log" -ex 'set logging on' -ex 'backtrace' -ex 'thread apply all backtrace' -ex 'quit' clickhouse    .core
 # sudo gdb -batch -ex 't apply all bt' -p $(pidof clickhouse-server) 2>&1 | tee trace
+
+# set pagination off
+# set logging file gdb.log
+# set logging on
+# backtrace
+# thread apply all backtrace
