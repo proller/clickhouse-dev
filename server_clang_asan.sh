@@ -3,8 +3,7 @@ set -e
 
 export BUILD_TYPE=${BUILD_TYPE:="_clang_asan"}
 CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-. $CUR_DIR/cmake_clang.sh -DSANITIZE=address -DUNBUNDLED=0 \
- $*
+. $CUR_DIR/cmake_clang_asan.sh $CMAKE_FLAGS $*
 # -DNO_WERROR=0 -DENABLE_RDKAFKA=0
 . $CUR_DIR/make.sh
 export  ASAN_OPTIONS=detect_odr_violation=0
