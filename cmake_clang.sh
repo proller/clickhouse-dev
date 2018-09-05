@@ -27,6 +27,10 @@ CXX=${CXX:=clang++}
 
 #CC=clang-5.0
 #CXX=clang++-5.0
+#CC=clang-6.0
+#CXX=clang++-6.0
+
+CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=clang++-6.0 -DINTERNAL_LINKER_EXECUTABLE=ld.lld-6.0 -DINTERNAL_COMPILER_BIN_ROOT=/usr/bin/ "
 
 set -e
 

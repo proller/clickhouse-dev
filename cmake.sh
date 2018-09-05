@@ -58,6 +58,7 @@ fi
     #CMAKE_OS+=" -DLLVM_VERSION=7 "
 
     #CMAKE_OS+=" -DUNBUNDLED=1 "
+    CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=clang++-6.0 -DINTERNAL_LINKER_EXECUTABLE=ld.lld-6.0 -DINTERNAL_COMPILER_BIN_ROOT=/usr/bin/ "
 
 if [ -n "" ]; then
     #ln -s $BUILD_DIR/dbms/src/Common/config_version.h  $CH_DIR/dbms/src/Common/config_version.h || true
