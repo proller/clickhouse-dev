@@ -16,7 +16,7 @@ else
     SORT_VERSION="--version-sort"
 fi
 
-if [[ `lsb_release -cs` == "trusty" ]]; then
+if [[ `lsb_release -cs` == "trusty" ]] || [[ "$OSTYPE" == "darwin"* ]]; then
     CC=${CC:=`bash -c "compgen -c gcc | grep 'gcc${COMPILER_MINUS}[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
     CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++${COMPILER_MINUS}[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
 fi
@@ -43,14 +43,20 @@ fi
 CMAKE_OS+=" -DCMAKE_CXX_COMPILER=`which ${CXX}` -DCMAKE_C_COMPILER=`which ${CC}` -DCMAKE_ASM_COMPILER=`which ${CC}` "
 CMAKE_OS+=" -DUSE_DEBUG_HELPERS=1 "
 
-if [ -n "`which ninja`" ]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
+# ld: unknown option: --color-diagnostics
+    CMAKE_OS+=""
+elif [ -n "`which ninja`" ]; then
     CMAKE_OS+="-G Ninja"
 fi
 
 if [[ `uname -i || echo ""` == "aarch64" ]]; then
     CMAKE_OS+=" -DUSE_INTERNAL_ZOOKEEPER_LIBRARY=0 "
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
+    #CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
+    #CMAKE_OS+="-DLINKER_SUPPORTS_COLOR_DIAGNOSTICS=0"
+    #CMAKE_OS+=" -DUSE_INTERNAL_LZ4_LIBRARY=0 "
+    CMAKE_OS+=""
 else
     CMAKE_OS+=""
 fi

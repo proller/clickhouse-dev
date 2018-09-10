@@ -3,7 +3,7 @@
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 export BUILD_TYPE=${BUILD_TYPE="_release"}
 
-if [[ "$OSTYPE" == "FreeBSD"* ]]; then
+if [[ "$OSTYPE" == "FreeBSD"* ]] || [[ "$OSTYPE" == "darwin"* ]]; then
     # fix for external rdkafka
     CMAKE_ADD+=" -DUSE_INTERNAL_LZ4_LIBRARY=0 "
 fi
