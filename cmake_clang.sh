@@ -18,7 +18,7 @@ fi
 
 set +e
 
-if [[ `lsb_release -cs` == "trusty" ]]; then
+if [[ `lsb_release -cs` == "trusty" ]] || [[ "$OSTYPE" == "FreeBSD"* ]]; then
     #CC=${CC:=`which clang-devel`}
     CC=${CC:=`bash -c "compgen -c clang | grep 'clang$COMPILER_MINUS[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
     #CXX=${CXX:=`which clang++-devel`}
