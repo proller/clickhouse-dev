@@ -16,7 +16,7 @@ else
     SORT_VERSION="--version-sort"
 fi
 
-if [[ `lsb_release -cs` == "trusty" ]] || [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ `lsb_release -cs` == "trusty" ]] || [[ "$OSTYPE" == "darwin"* ]] || [[ "$OSTYPE" == "FreeBSD"* ]]; then
     CC=${CC:=`bash -c "compgen -c gcc | grep 'gcc${COMPILER_MINUS}[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
     CXX=${CXX:=`bash -c "compgen -c g++ | grep 'g++${COMPILER_MINUS}[[:digit:]]' | sort $SORT_VERSION --reverse | head -n1"`}
 fi
@@ -35,6 +35,8 @@ if [[ "$OSTYPE" == "FreeBSD"* ]]; then
     CMAKE_OS+=" -DCOMPILER_FLAGS='-DLZ4_DISABLE_DEPRECATE_WARNINGS=1' "
 #-DENABLE_CAPNP=0 
     CMAKE_OS+=" -DENABLE_MYSQL=0 "
+    CMAKE_OS+=" -DUSE_INTERNAL_ZLIB_LIBRARY=0 "
+    CMAKE_OS+=" -DENABLE_RDKAFKA=0 "
 fi
 
 #CMAKE_OS+=" -DCXX11_ABI=ENABLE "
