@@ -53,10 +53,10 @@ fi
 if [[ `uname -i || echo ""` == "aarch64" ]]; then
     CMAKE_OS+=" -DUSE_INTERNAL_ZOOKEEPER_LIBRARY=0 "
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    #CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
+    CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
     #CMAKE_OS+="-DLINKER_SUPPORTS_COLOR_DIAGNOSTICS=0"
     #CMAKE_OS+=" -DUSE_INTERNAL_LZ4_LIBRARY=0 "
-    CMAKE_OS+=""
+    #CMAKE_OS+=""
 else
     CMAKE_OS+=""
 fi
