@@ -30,4 +30,4 @@ set -e
 
 cd $BUILD_DIR
 
-env CLICKHOUSE_LOG=$LOG_DIR$BUILD_TYPE.server.log TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE ctest $V $MAKEJ
+env CLICKHOUSE_LOG=${LOG_DIR}log$BUILD_TYPE.server.log TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE ctest $V $MAKEJ
