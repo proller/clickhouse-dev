@@ -3,6 +3,7 @@
 CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 export BUILD_DIR=${BUILD_DIR:="$CUR_DIR/../build$BUILD_TYPE"}
+LOG_DIR=${LOG_DIR=$CUR_DIR/log/}
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     TIMEV=""
@@ -29,4 +30,4 @@ set -e
 
 cd $BUILD_DIR
 
-env CLICKHOUSE_LOG=$CUR_DIR/log$BUILD_TYPE.server.log TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE ctest $V $MAKEJ
+env CLICKHOUSE_LOG=$LOG_DIR$BUILD_TYPE.server.log TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE ctest $V $MAKEJ
