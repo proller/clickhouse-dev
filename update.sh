@@ -12,6 +12,8 @@ git remote add upstream https://github.com/yandex/ClickHouse.git
 git fetch --all
 git pull --rebase
 git pull && git merge --no-edit upstream/master && git push && git submodule update --init --recursive
+git describe
+git status
 git diff upstream/master
 
 cd ${CURDIR}
