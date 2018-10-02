@@ -7,6 +7,9 @@ export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 export BUILD_DIR=${BUILD_DIR:="$CUR_DIR/../build$BUILD_TYPE"}
 export CH_DIR=${CH_DIR:="$CUR_DIR/.."}
 
+mkdir -p $BUILD_DIR && cd $BUILD_DIR
+rm $BUILD_DIR/CMakeCache.txt || true
+
 COMPILER_MINUS="-"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     SORT_VERSION=""
@@ -27,9 +30,10 @@ CXX=${CXX:=g++}
 #CC=gcc-7
 #CXX=g++-7
 
-mkdir -p $BUILD_DIR && cd $BUILD_DIR
 
-rm $BUILD_DIR/CMakeCache.txt || true
+if [[ `lsb_release -cs` == "trusty" ]] ; then
+    CMAKE_OS+=" -DHAVE_EXPLICIT_BZERO=1 "
+fi
 
 if [[ "$OSTYPE" == "FreeBSD"* ]]; then
     CMAKE_OS+=" -DCOMPILER_FLAGS='-DLZ4_DISABLE_DEPRECATE_WARNINGS=1' "
@@ -66,7 +70,7 @@ fi
     #CMAKE_OS+=" -DLLVM_VERSION=7 "
 
     #CMAKE_OS+=" -DUNBUNDLED=1 "
-    CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
+    CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 -DUSE_INTERNAL_LLVM_LIBRARY=0 "
     CMAKE_OS+=" -DENABLE_TEST_INTEGRATION=1 "
     #CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=clang++-6.0 -DINTERNAL_LINKER_EXECUTABLE=ld.lld-6.0 -DINTERNAL_COMPILER_BIN_ROOT=/usr/bin/ "
 
