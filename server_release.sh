@@ -3,9 +3,9 @@
 set -e
 
 export BUILD_TYPE=${BUILD_TYPE="_release"}
-CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-. $CURDIR/cmake_release.sh $*
+CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+. $CUR_DIR/cmake_release.sh $*
 # -DUSE_STATIC_LIBRARIES=1 -DSPLIT_SHARED_LIBRARIES=0 -DCLICKHOUSE_SPLIT_BINARY=0 -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DENABLE_RDKAFKA=0
-. $CURDIR/make.sh clickhouse-bundle
+. $CUR_DIR/make.sh clickhouse-bundle
 # VERBOSE=1
-. $CURDIR/server.sh
+. $CUR_DIR/server.sh
