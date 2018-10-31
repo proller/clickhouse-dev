@@ -10,7 +10,7 @@ elif [[ "$OSTYPE" == "FreeBSD"* ]]; then
     TIMEV=""
 else
     TIMEV="-v"
-    MAKEL="-l $((`nproc || sysctl -n hw.ncpu || echo 2`*1))"
+    MAKEL="-l $((`nproc || sysctl -n hw.ncpu || echo 2`*2))"
 fi
 
 if [[ $(echo `distcc --show-hosts | wc -l` || echo 0) == "0" ]]; then

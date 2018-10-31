@@ -30,3 +30,6 @@ $CURDIR/../build${BUILD_TYPE}/dbms/programs/clickhouse-server --config=config.xm
 # set logging on
 # backtrace
 # thread apply all backtrace
+
+
+# gdb -ex 'break __asan::ReportGenericError' -ex run 
