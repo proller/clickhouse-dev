@@ -15,6 +15,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
     SORT_VERSION="--version-sort"
 fi
+if [[ `uname -i || echo ""` == "aarch64" ]]; then
+    CMAKE_OS+=" -DARCH_NATIVE=0 " # clang: error: the clang compiler does not support '-march=native'
+fi
+
 
 set +e
 
