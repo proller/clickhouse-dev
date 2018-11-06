@@ -29,6 +29,8 @@ CXX=${CXX:=g++}
 
 #CC=gcc-7
 #CXX=g++-7
+#CC=gcc-8
+#CXX=g++-8
 
 
 if [[ `lsb_release -cs` == "trusty" ]] ; then
@@ -57,7 +59,8 @@ elif [ -n "`which ninja`" ]; then
 fi
 
 if [[ `uname -i || echo ""` == "aarch64" ]]; then
-    CMAKE_OS+=" -DUSE_INTERNAL_ZOOKEEPER_LIBRARY=0 "
+    #CMAKE_OS+=" -DUSE_INTERNAL_ZOOKEEPER_LIBRARY=0 "
+    CMAKE_OS+=" -DARCH_NATIVE=1 " # error: use of undeclared identifier '__crc32cd'
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
     #CMAKE_OS+="-DLINKER_SUPPORTS_COLOR_DIAGNOSTICS=0"
