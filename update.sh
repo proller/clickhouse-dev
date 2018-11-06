@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 #UPDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)
-CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-cd ${CURDIR}
+cd ${CUR_DIR}
 git pull --rebase
 
-cd ${CURDIR}/..
+cd ${CUR_DIR}/..
 
 git remote add upstream https://github.com/yandex/ClickHouse.git
 git fetch --all
@@ -16,4 +16,4 @@ git describe
 git status
 git diff upstream/master
 
-cd ${CURDIR}
+cd ${CUR_DIR}
