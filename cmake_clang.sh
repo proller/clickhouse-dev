@@ -32,10 +32,12 @@ fi
 CC=${CC:=clang}
 CXX=${CXX:=clang++}
 
-#CC=clang-5.0
-#CXX=clang++-5.0
-#CC=clang-6.0
-#CXX=clang++-6.0
+#CC=`which clang${COMPILER_MINUS}5.0 clang${COMPILER_MINUS}50`
+#CXX=`which clang++${COMPILER_MINUS}5.0 clang++${COMPILER_MINUS}50`
+#CC=`which clang${COMPILER_MINUS}6.0 clang${COMPILER_MINUS}60`
+#CXX=`which clang++${COMPILER_MINUS}6.0 clang++${COMPILER_MINUS}60`
+#CC=`which clang${COMPILER_MINUS}7.0 clang${COMPILER_MINUS}70 clang${COMPILER_MINUS}7`
+#CXX=`which clang++${COMPILER_MINUS}7.0 clang++${COMPILER_MINUS}70 clang++${COMPILER_MINUS}7`
 
 #CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=clang++-6.0 -DINTERNAL_LINKER_EXECUTABLE=ld.lld-6.0 -DINTERNAL_COMPILER_BIN_ROOT=/usr/bin/ "
 
