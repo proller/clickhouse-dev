@@ -8,25 +8,8 @@
 	<!--port>9000</port-->
 
 	<openSSL>
-		<server>
-			<!-- openssl req -subj "/CN=localhost" -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -out server.crt -->
-			<certificateFile>server.crt</certificateFile>
-			<privateKeyFile>server.key</privateKeyFile>
-			<!-- openssl dhparam -out dhparam.pem 4096 -->
-			<dhParamsFile>dhparam.pem</dhParamsFile>
-			<loadDefaultCAFile>true</loadDefaultCAFile>
-			<cacheSessions>true</cacheSessions>
-			<disableProtocols>sslv2,sslv3</disableProtocols>
-			<preferServerCiphers>true</preferServerCiphers>
-			<invalidCertificateHandler>
-				<name>AcceptCertificateHandler</name>
-				<zname>RejectCertificateHandler</zname>
-			</invalidCertificateHandler>
-
-		</server>
 		<client>
 			<!--certificateFile>client.crt</certificateFile>
-
 			<privateKeyFile>client.key</privateKeyFile-->
 			<loadDefaultCAFile>true</loadDefaultCAFile>
 			<cacheSessions>true</cacheSessions>
@@ -35,7 +18,6 @@
 			<verificationMode>none</verificationMode>
 			<invalidCertificateHandler>
 				<name>AcceptCertificateHandler</name>
-				<zname>RejectCertificateHandler</zname>
 			</invalidCertificateHandler>
 		</client>
 	</openSSL>
