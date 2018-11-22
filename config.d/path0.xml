@@ -1,0 +1,21 @@
+<yandex>
+    <logger>
+        <log>log/clickhouse-server.log</log>
+        <errorlog>log/clickhouse-server.err.log</errorlog>
+    </logger>
+    <openSSL>
+        <server> <!-- Used for https server AND secure tcp port -->
+            <certificateFile>server.crt</certificateFile>
+            <privateKeyFile>server.key</privateKeyFile>
+            <dhParamsFile>dhparam.pem</dhParamsFile>
+        </server>
+    </openSSL>
+    <path>data/</path>
+    <tmp_path>data/tmp/</tmp_path>
+    <user_files_path>data/user_files/</user_files_path>
+    <format_schema_path>data/format_schemas/</format_schema_path>
+
+    <distributed_ddl>
+        <path>/clickhouse_proller_0/task_queue/ddl</path>
+    </distributed_ddl>
+</yandex>

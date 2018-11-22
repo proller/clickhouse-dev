@@ -1,0 +1,25 @@
+<yandex>
+    <http_port>18123</http_port>
+    <tcp_port>19000</tcp_port>
+    <https_port>18443</https_port>
+    <tcp_port_secure>19440</tcp_port_secure>
+    <interserver_http_port>19009</interserver_http_port>     
+
+    <remote_servers incl="clickhouse_remote_servers" >
+        <test_shard_localhost>
+            <shard>
+                <replica>
+                    <port>19000</port>
+                </replica>
+            </shard>
+        </test_shard_localhost>
+        <test_shard_localhost_secure>
+            <shard>
+                <replica>
+                    <port>19440</port>
+                </replica>
+            </shard>
+        </test_shard_localhost_secure>
+    </remote_servers>
+
+</yandex>
