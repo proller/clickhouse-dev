@@ -1,0 +1,4 @@
+<yandex>
+    <dictionaries_config>../dbms/tests/external_dictionaries/generated/dictionary_*.xml</dictionaries_config>
+    <dictionaries_config>dictionaries/dictionary_*.xml</dictionaries_config>
+</yandex>
