@@ -2,4 +2,4 @@
 
 CURDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 export BUILD_TYPE=${BUILD_TYPE:="_debug"}
-. $CURDIR/cmake.sh -DCMAKE_BUILD_TYPE=Debug $*
+. $CURDIR/cmake.sh -DCMAKE_BUILD_TYPE=Debug -DENABLE_JEMALLOC=0 $*
