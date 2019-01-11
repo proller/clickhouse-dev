@@ -5,7 +5,7 @@ export BUILD_TYPE=${BUILD_TYPE:="_clang_asan"}
 CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 LOG_DIR=${LOG_DIR=$CUR_DIR/log/}
 
-. $CUR_DIR/cmake_clang_asan.sh $CMAKE_FLAGS $*
+. $CUR_DIR/cmake_clang_asan.sh -DENABLE_UNWIND=0 $CMAKE_FLAGS $*
 . $CUR_DIR/make.sh
 export ASAN_OPTIONS=detect_odr_violation=0
 . $CUR_DIR/server.sh -- --logger.console=0 2>&1 | tee ${LOG_DIR}log$BUILD_TYPE.asan.log

@@ -98,9 +98,14 @@ fi
 # -DENABLE_JEMALLOC=0
 # -DNO_WERROR=1
 
+#rm -fr $CH_DIR/dbms/src/Functions/generated $CH_DIR/dbms/src/Functions/CMakeFiles/clickhouse_functions.dir/generated
+
 cmake $CH_DIR -DUSE_STATIC_LIBRARIES=0 -DSPLIT_SHARED_LIBRARIES=1 -DCLICKHOUSE_SPLIT_BINARY=1 -DCMAKE_BUILD_TYPE=Debug $CMAKE_OS $*
 
 #cmake .. -DCMAKE_CXX_COMPILER=`which ${CXX}` -DCMAKE_C_COMPILER=`which ${CC}` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug $*
 #cmake .. -DCMAKE_CXX_COMPILER=`which g++-8` -DCMAKE_C_COMPILER=`which gcc-8` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
 #cmake .. -DCMAKE_CXX_COMPILER=`which g++-7` -DCMAKE_C_COMPILER=`which gcc-7` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
 #cmake .. -DCMAKE_CXX_COMPILER=`which g++-6` -DCMAKE_C_COMPILER=`which gcc-6` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
+
+
+# cmake ..  -DMAKE_STATIC_LIBRARIES=OFF -DCMAKE_BUILD_TYPE=Release -DENABLE_EMBEDDED_COMPILER=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DICUI18N=/usr/lib/x86_64-linux-gnu/libicui18n.so -DICUUC=/usr/lib/x86_64-linux-gnu/libicuuc.so -DICUDATA=/usr/lib/x86_64-linux-gnu/libicudata.so

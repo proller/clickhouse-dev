@@ -16,3 +16,6 @@ SERVER_CONFIG_OPT="--compiler_headers=$BUILD_DIR/dbms/programs/clang/headers/$VE
 
 #env PATH=$PATH:${CUR_DIR}/../build$BUILD_TYPE/dbms/programs/ \
 ${CUR_DIR}/../build$BUILD_TYPE/dbms/programs/clickhouse-server --config=$CUR_DIR/config.xml $* -- $SERVER_CONFIG_OPT 2>&1 | tee $LOG_DIR$BUILD_TYPE.server.console.log
+
+
+# cat clickhouse-server.log  | grep -aF "<Debug> executeQuery: (from " | perl -lpe 's/^.*executeQuery: \(from \S+\) (.*)/$1;/' | head -n50 > last50.log
