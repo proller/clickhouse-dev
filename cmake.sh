@@ -79,16 +79,14 @@ fi
     CMAKE_OS+=" -DENABLE_TEST_INTEGRATION=1 "
     #CMAKE_OS+=" -DENABLE_CODE_QUALITY=1 "
     #CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=clang++-6.0 -DINTERNAL_LINKER_EXECUTABLE=ld.lld-6.0 -DINTERNAL_COMPILER_BIN_ROOT=/usr/bin/ "
+    #CMAKE_OS+=" -DINTERNAL_COMPILER_BIN_ROOT=$BUILD_DIR/dbms/programs/ "
     #CMAKE_OS+=" -DUSE_INTERNAL_JEMALLOC_LIBRARY=0 "
     #export Poco_DIR=/home/proller/tmp/poco/
     #CMAKE_OS+=" -DUSE_INTERNAL_POCO_LIBRARY=0 -DUSE_INTERNAL_SSL_LIBRARY=0 "
 
-if [ -n "" ]; then
     #ln -s $BUILD_DIR/dbms/src/Common/config_version.h  $CH_DIR/dbms/src/Common/config_version.h || true
     #CMAKE_OS+=" -DINTERNAL_COMPILER_HEADERS=${CH_DIR} -DINTERNAL_COMPILER_HEADERS_ROOT=/usr/share/clickhouse/headers/ "
     #CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=$BUILD_DIR/dbms/programs/clickhouse-clang -DINTERNAL_LINKER_EXECUTABLE=$BUILD_DIR/dbms/programs/clickhouse-lld "
-    CMAKE_OS+=""
-fi
 
 # -DENABLE_CRYPTO=0 -DENABLE_NETSSL=0 \
 # -DUSE_INTERNAL_SSL_LIBRARY=1 \
