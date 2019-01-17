@@ -9,3 +9,4 @@ env SANITIZER=address ${CUR_DIR}/../release
 env BUILD_TYPE=debug ${CUR_DIR}/../release
 ${CUR_DIR}/../release
 ${CUR_DIR}/../utils/build/build_debian_unbundled.sh
+${CUR_DIR}/../release --no-pbuilder
