@@ -15,6 +15,7 @@ bash $CUR_DIR/make.sh
 
 # valgrind  --show-leak-kinds=all --leak-check=full
 
+# $GDB -ex 'set pagination off' -ex "set logging file gdb.log" -ex 'set logging on' -ex 'run' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit' --args \
 # $GDB -ex run --args \
 ${CUR_DIR}/../build${BUILD_TYPE}/dbms/programs/clickhouse-client --config ${CUR_DIR}/clickhouse-client.xml --stacktrace $*
 
