@@ -32,6 +32,7 @@ CXX=${CXX:=g++}
 #CC=gcc-8
 #CXX=g++-8
 
+CMAKE_OS+=" -DCLICKHOUSE_SPLIT_BINARY=1 -DCMAKE_BUILD_TYPE=Debug "
 
 if [[ `lsb_release -cs` == "trusty" ]] ; then
     CMAKE_OS+=" -DHAVE_EXPLICIT_BZERO=1 "
@@ -39,12 +40,15 @@ fi
 
 if [[ "$OSTYPE" == "FreeBSD"* ]]; then
     #CMAKE_OS+=" -DCOMPILER_FLAGS='-DLZ4_DISABLE_DEPRECATE_WARNINGS=1' "
-#-DENABLE_CAPNP=0 
     #CMAKE_OS+=" -DENABLE_MYSQL=0 "
     #CMAKE_OS+=" -DUSE_INTERNAL_ZLIB_LIBRARY=0 "
     #CMAKE_OS+=" -DENABLE_RDKAFKA=0 "
     #CMAKE_OS+=" -DUNBUNDLED=1 "
-    CMAKE_OS+=""
+    CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
+    CMAKE_OS+=" -DUSE_INTERNAL_LLVM_LIBRARY=0 "
+    #CMAKE_OS+=""
+else
+    CMAKE_OS+=" -DSPLIT_SHARED_LIBRARIES=1 -DUSE_STATIC_LIBRARIES=0 " # TODO: fix link order
 fi
 
 #CMAKE_OS+=" -DCXX11_ABI=ENABLE "
@@ -98,7 +102,7 @@ fi
 
 #rm -fr $CH_DIR/dbms/src/Functions/generated $CH_DIR/dbms/src/Functions/CMakeFiles/clickhouse_functions.dir/generated
 
-cmake $CH_DIR -DUSE_STATIC_LIBRARIES=0 -DSPLIT_SHARED_LIBRARIES=1 -DCLICKHOUSE_SPLIT_BINARY=1 -DCMAKE_BUILD_TYPE=Debug $CMAKE_OS $*
+cmake $CH_DIR $CMAKE_OS $*
 
 #cmake .. -DCMAKE_CXX_COMPILER=`which ${CXX}` -DCMAKE_C_COMPILER=`which ${CC}` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug $*
 #cmake .. -DCMAKE_CXX_COMPILER=`which g++-8` -DCMAKE_C_COMPILER=`which gcc-8` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
