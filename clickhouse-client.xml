@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<config>
+<yandex>
     <!--
 	<http_port>8123</http_port>
 	<tcp_port>9000</tcp_port>
@@ -21,4 +21,6 @@
 			</invalidCertificateHandler>
 		</client>
 	</openSSL>
-</config>
+
+    <timezone>Europe/Moscow</timezone>
+</yandex>

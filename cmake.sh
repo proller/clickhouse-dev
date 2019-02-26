@@ -46,7 +46,11 @@ if [[ "$OSTYPE" == "FreeBSD"* ]]; then
     #CMAKE_OS+=" -DUNBUNDLED=1 "
     CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
     CMAKE_OS+=" -DUSE_INTERNAL_LLVM_LIBRARY=0 "
+    CMAKE_OS+=" -DENABLE_CAPNP=0 " # gcc9 only
     #CMAKE_OS+=""
+    CC=gcc8
+    CXX=g++8
+    CMAKE_OS+=" -DPARALLEL_LINK_JOBS=2 "
 else
     CMAKE_OS+=" -DSPLIT_SHARED_LIBRARIES=1 -DUSE_STATIC_LIBRARIES=0 " # TODO: fix link order
 fi
@@ -91,6 +95,7 @@ fi
     #ln -s $BUILD_DIR/dbms/src/Common/config_version.h  $CH_DIR/dbms/src/Common/config_version.h || true
     #CMAKE_OS+=" -DINTERNAL_COMPILER_HEADERS=${CH_DIR} -DINTERNAL_COMPILER_HEADERS_ROOT=/usr/share/clickhouse/headers/ "
     #CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=$BUILD_DIR/dbms/programs/clickhouse-clang -DINTERNAL_LINKER_EXECUTABLE=$BUILD_DIR/dbms/programs/clickhouse-lld "
+    #CMAKE_OS+=" -DNO_WERROR=1 "
 
 # -DENABLE_CRYPTO=0 -DENABLE_NETSSL=0 \
 # -DUSE_INTERNAL_SSL_LIBRARY=1 \
@@ -98,7 +103,6 @@ fi
 # -DENABLE_CAPNP=0 -DCapnProto_DEBUG=1
 # -DCMAKE_EXE_LINKER_FLAGS=-v
 # -DENABLE_JEMALLOC=0
-# -DNO_WERROR=1
 
 #rm -fr $CH_DIR/dbms/src/Functions/generated $CH_DIR/dbms/src/Functions/CMakeFiles/clickhouse_functions.dir/generated
 
