@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+export BUILD_TYPE=${BUILD_TYPE:="_debug"}
+CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+export MAKE_TARGET=clickhouse-client
+bash $CUR_DIR/make.sh
+
+CLICKHOUSE_CLIENT="${CUR_DIR}/../build${BUILD_TYPE}/dbms/programs/clickhouse-client --config ${CUR_DIR}/clickhouse-client.xml --stacktrace $*"
+
+$CLICKHOUSE_CLIENT -q 'SELECT * FROM system.events FORMAT PrettyCompactNoEscapes'
+$CLICKHOUSE_CLIENT -q "SELECT * FROM system.metrics FORMAT PrettyCompactNoEscapes"
+$CLICKHOUSE_CLIENT -q "SELECT * FROM system.asynchronous_metrics FORMAT PrettyCompactNoEscapes"
+$CLICKHOUSE_CLIENT -q "SELECT * FROM system.processes FORMAT PrettyCompactNoEscapes"
+
+#$CLICKHOUSE_CLIENT -q "SELECT * FROM system.build_options FORMAT PrettyCompactNoEscapes"
+#$CLICKHOUSE_CLIENT -q "SELECT * FROM system.merges FORMAT PrettyCompactNoEscapes"
+#$CLICKHOUSE_CLIENT -q "SELECT * FROM system.parts FORMAT PrettyCompactNoEscapes"
+#$CLICKHOUSE_CLIENT -q "SELECT * FROM system.replication_queue FORMAT PrettyCompactNoEscapes"
+#$CLICKHOUSE_CLIENT -q "SELECT * FROM system.replicas FORMAT PrettyCompactNoEscapes"
+#$CLICKHOUSE_CLIENT -q "SELECT * FROM system.dictionaries FORMAT PrettyCompactNoEscapes"
