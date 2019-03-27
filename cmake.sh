@@ -70,7 +70,11 @@ fi
 
 if [[ `uname -i || echo ""` == "aarch64" ]]; then
     #CMAKE_OS+=" -DUSE_INTERNAL_ZOOKEEPER_LIBRARY=0 "
-    CMAKE_OS+=" -DARCH_NATIVE=1 " # error: use of undeclared identifier '__crc32cd'
+    #CMAKE_OS+=" -DARCH_NATIVE=1 " # error: use of undeclared identifier '__crc32cd'
+    #CMAKE_OS+="  -DCOMPILER_FLAGS=-mfpu=neon " # -DCMAKE_EXE_LINKER_FLAGS=-mfpu=neon
+    #CMAKE_OS+=" -DCOMPILER_FLAGS=-mfpu=auto " # -mcpu=native
+    #CMAKE_OS+=" -DCOMPILER_FLAGS=-mcpu=native "
+    CMAKE_OS+=" -DUSE_INTERNAL_ZLIB_LIBRARY=0 " # contrib/zlib-ng/libzd.so.1.2.11.zlib-ng: error: undefined reference to '__crc32w'
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     CMAKE_OS+=" -DENABLE_EMBEDDED_COMPILER=0 "
     #CMAKE_OS+="-DLINKER_SUPPORTS_COLOR_DIAGNOSTICS=0"

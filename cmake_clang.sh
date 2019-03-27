@@ -15,9 +15,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 else
     SORT_VERSION="--version-sort"
 fi
-if [[ `uname -i || echo ""` == "aarch64" ]]; then
-    CMAKE_OS+=" -DARCH_NATIVE=0 " # clang: error: the clang compiler does not support '-march=native'
-fi
+#if [[ `uname -i || echo ""` == "aarch64" ]]; then
+#    CMAKE_OS+=" -DARCH_NATIVE=0 " # clang: error: the clang compiler does not support '-march=native'
+#fi
 
 
 set +e
@@ -56,3 +56,4 @@ mkdir -p $CURDIR/../build$BUILD_TYPE && cd $CURDIR/../build$BUILD_TYPE
 #cmake .. -DCMAKE_CXX_COMPILER=`which clang++-5.0` -DCMAKE_C_COMPILER=`which clang-5.0` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
 #cmake .. -DCMAKE_CXX_COMPILER=`which clang++-6.0` -DCMAKE_C_COMPILER=`which clang-6.0` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
 #cmake .. -DCMAKE_CXX_COMPILER=`which clang++-7` -DCMAKE_C_COMPILER=`which clang-7` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
+#cmake .. -DCMAKE_CXX_COMPILER=`which clang++` -DCMAKE_C_COMPILER=`which clang` -DUSE_STATIC_LIBRARIES=0 -DCMAKE_BUILD_TYPE=Debug
