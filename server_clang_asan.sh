@@ -8,8 +8,11 @@ LOG_DIR=${LOG_DIR=$CUR_DIR/log/}
 . $CUR_DIR/cmake_clang_asan.sh -DENABLE_UNWIND=0 $CMAKE_FLAGS $*
 . $CUR_DIR/make.sh
 export ASAN_OPTIONS=detect_odr_violation=0
+#export ASAN_SYMBOLIZER_PATH=`which asan_symbolize-7`
+#export ASAN_SYMBOLIZER_PATH=`which llvm-symbolizer-7`
+export ASAN_SYMBOLIZER_PATH=`which llvm-symbolizer`
 . $CUR_DIR/server.sh -- --logger.console=0 2>&1 | tee ${LOG_DIR}log$BUILD_TYPE.asan.log
-cat ${LOG_DIR}log$BUILD_TYPE.asan.log | asan_symbolize-6.0 | c++filt > ${LOG_DIR}log$BUILD_TYPE.asan.filt.log
+#cat ${LOG_DIR}log$BUILD_TYPE.asan.log | asan_symbolize-6.0 | c++filt > ${LOG_DIR}log$BUILD_TYPE.asan.filt.log
 
 
 #. $CUR_DIR/server.sh | llvm-symbolizer-6.0 | c++filt

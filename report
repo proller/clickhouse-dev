@@ -7,10 +7,11 @@ bash $CUR_DIR/make.sh
 
 CLICKHOUSE_CLIENT="${CUR_DIR}/../build${BUILD_TYPE}/dbms/programs/clickhouse-client --config ${CUR_DIR}/clickhouse-client.xml --stacktrace $*"
 
+$CLICKHOUSE_CLIENT -q "SHOW PROCESSLIST;"
 $CLICKHOUSE_CLIENT -q 'SELECT * FROM system.events FORMAT PrettyCompactNoEscapes'
 $CLICKHOUSE_CLIENT -q "SELECT * FROM system.metrics FORMAT PrettyCompactNoEscapes"
 $CLICKHOUSE_CLIENT -q "SELECT * FROM system.asynchronous_metrics FORMAT PrettyCompactNoEscapes"
-$CLICKHOUSE_CLIENT -q "SELECT * FROM system.processes FORMAT PrettyCompactNoEscapes"
+#$CLICKHOUSE_CLIENT -q "SELECT * FROM system.processes FORMAT PrettyCompactNoEscapes"
 
 #$CLICKHOUSE_CLIENT -q "SELECT * FROM system.build_options FORMAT PrettyCompactNoEscapes"
 #$CLICKHOUSE_CLIENT -q "SELECT * FROM system.merges FORMAT PrettyCompactNoEscapes"
