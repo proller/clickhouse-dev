@@ -16,7 +16,7 @@ LLDB=${LLDB:=`bash -c "compgen -c lldb | grep 'lldb[[:digit:]]' | sort --version
 LLDB=${LLDB:=lldb}
 
 # $LLDB -ex run \
-$GDB -ex run -ex 'set pagination off' -ex "set logging file log$BUILD_TYPE.gdb0.log" -ex 'set logging on' -ex 'continue' -ex 'backtrace' -ex 'thread apply all backtrace' -ex 'backtrace' --args \
+$GDB -ex run -ex 'set pagination off' -ex "set logging file ${LOG_DIR}log$BUILD_TYPE.gdb0.log" -ex 'set logging on' -ex 'continue' -ex 'backtrace' -ex 'thread apply all backtrace' -ex 'backtrace' --args \
 $CUR_DIR/../build${BUILD_TYPE}/dbms/programs/clickhouse-server --config=$CUR_DIR/config.xml --log=${LOG_DIR}log$BUILD_TYPE.server_gdb.log $* | tee ${LOG_DIR}log$BUILD_TYPE.gdb.log
 
 # -ex 'set pagination off' -ex "set logging file gdb.log" -ex 'set logging on' -ex 'continue' -ex 'thread apply all backtrace' -ex 'detach' -ex 'quit'
