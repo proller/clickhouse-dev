@@ -3,6 +3,7 @@
 CUR_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 export BUILD_TYPE=${BUILD_TYPE:="_debug"}
 export BUILD_DIR=${BUILD_DIR:="$CUR_DIR/../build$BUILD_TYPE"}
+export ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd .. && pwd)
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     TIMEV=""
@@ -34,8 +35,7 @@ MAKE_TARGET=${MAKE_TARGET:=$*}
 MAKE_TARGET=${MAKE_TARGET:=clickhouse-bundle}
 
 # env -u CCACHE_PREFIX \
-TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE cmake --build . -- $MAKEJ $MAKEL $MAKE_TARGET
-
+env CCACHE_BASEDIR=$ROOT_DIR TIME="\t%e,\t%M" /usr/bin/time $TIMEV nice -n20 $IONICE cmake --build . -- $MAKEJ $MAKEL $MAKE_TARGET
 
 
 #old:
