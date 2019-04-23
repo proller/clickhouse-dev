@@ -99,7 +99,7 @@ fi
     #ln -s $BUILD_DIR/dbms/src/Common/config_version.h  $CH_DIR/dbms/src/Common/config_version.h || true
     #CMAKE_OS+=" -DINTERNAL_COMPILER_HEADERS=${CH_DIR} -DINTERNAL_COMPILER_HEADERS_ROOT=/usr/share/clickhouse/headers/ "
     #CMAKE_OS+=" -DINTERNAL_COMPILER_EXECUTABLE=$BUILD_DIR/dbms/programs/clickhouse-clang -DINTERNAL_LINKER_EXECUTABLE=$BUILD_DIR/dbms/programs/clickhouse-lld "
-    #CMAKE_OS+=" -DNO_WERROR=1 "
+    # CMAKE_OS+=" -DNO_WERROR=1 "
 
 # -DENABLE_CRYPTO=0 -DENABLE_NETSSL=0 \
 # -DUSE_INTERNAL_SSL_LIBRARY=1 \
