@@ -9,9 +9,11 @@ cd ${BENCH_DIR}
 
 [ ! -s clickhouse ] && wget -O clickhouse https://clickhouse-builds.s3.yandex.net/0/a691747129fc7b5d8a1629f324ca08952ca3d80d/1580617747_binary/clickhouse
 chmod a+x clickhouse
+ln -s clickhouse clickhouse-client
+ln -s clickhouse clickhouse-server
 
 [ ! -s config.xml ] && wget -O config.xml https://raw.githubusercontent.com/ClickHouse/ClickHouse/master/dbms/programs/server/config.xml
-[ ! -s users.xml ]wget -O users.xml https://raw.githubusercontent.com/ClickHouse/ClickHouse/master/dbms/programs/server/users.xml
+[ ! -s users.xml ] && wget -O users.xml https://raw.githubusercontent.com/ClickHouse/ClickHouse/master/dbms/programs/server/users.xml
 mkdir -p config.d
 [ ! -s config.d/path.xml ] && wget -O config.d/path.xml https://raw.githubusercontent.com/ClickHouse/ClickHouse/master/dbms/programs/server/config.d/path.xml
 [ ! -s config.d/log_to_console.xml ] && wget -O config.d/log_to_console.xml https://raw.githubusercontent.com/ClickHouse/ClickHouse/master/dbms/programs/server/config.d/log_to_console.xml
@@ -20,6 +22,18 @@ mkdir -p config.d
 chmod a+x benchmark-new.sh
 [ ! -s queries.sql ] && wget -O queries.sql https://raw.githubusercontent.com/ClickHouse/ClickHouse/master/dbms/benchmark/clickhouse/queries.sql
 
-[ ! -s hits_100m_obfuscated_v1.tar.xz ] && wget -O hits_100m_obfuscated_v1.tar.xz https://clickhouse-datasets.s3.yandex.net/hits/partitions/hits_100m_obfuscated_v1.tar.xz
-tar xvf hits_100m_obfuscated_v1.tar.xz -C .
-mv hits_100m_obfuscated_v1/* .
+if [[ ! -d data ]]; then
+    [ ! -s hits_100m_obfuscated_v1.tar.xz ] && wget -O hits_100m_obfuscated_v1.tar.xz https://clickhouse-datasets.s3.yandex.net/hits/partitions/hits_100m_obfuscated_v1.tar.xz
+    tar xvf hits_100m_obfuscated_v1.tar.xz -C .
+    mv hits_100m_obfuscated_v1/* .
+fi
+
+./clickhouse-server > server.log 2>&1 &
+pid=$!
+sleep 1
+
+./clickhouse-client --query "SELECT count() FROM hits_100m_obfuscated"
+
+env PATH=$PATH:. ./benchmark-new.sh hits_100m_obfuscated
+
+kill $pid
